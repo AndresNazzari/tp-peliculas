@@ -22,9 +22,11 @@ require __DIR__ . '/consultas/listado-peliculas.php'
                     <div class="form-group">
                         <label for="fecha"></label>
                         <select name="fecha" id="fecha" class="form-control">
+                            <option value="all">Seleccione un año</option>
                             <?php for($i=2012; $i<=2024; $i++): ?>
                                 <option value="<?php echo $i ?>"><?php echo $i ?></option>
                             <?php endfor; ?>
+                            <option value="all">Todos</option>
                         </select>
                     </div>
                 </form>
@@ -33,30 +35,17 @@ require __DIR__ . '/consultas/listado-peliculas.php'
                 <button class="btn btn-primary" form="form" type="submit">Filtrar</button>
             </div>
         </div>
-        <div class="row m-t3">
-            <div class="col-md-12">
-                <table class="table table-striped table-border">
-                    <thead>
-                        <tr>
-                            <th>Título</th> 
-                            <th>Rating</th>
-                            <th>Fecha de estreno</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach($peliculas as $pelicula): ?>
-                            <tr>
-                                <!-- pelicula.php?id=N -->
-                                <th>
-                                    <a href="pelicula.php?id=<?php echo $pelicula->id; ?>"><?php echo $pelicula->titulo ?></a>
-                                </th>
-                                <th><?php echo $pelicula->rating ?></th>
-                                <th><?php echo $pelicula->estreno ?></th>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
+        <div class="d-flex flex-row flex-wrap">
+            <?php foreach($peliculas as $pelicula): ?>
+                <div class="card  m-3" style="width: 18rem;">
+                    <img class="card-img-top" src=<?php echo $pelicula->poster ?> alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $pelicula->titulo ?></h5>
+                        <p class="card-text"><?php echo $pelicula->genero ?></p>
+                        <a href="pelicula.php?id=<?php echo $pelicula->id; ?>" class="btn btn-primary">Detalles</a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </main>
 </body>

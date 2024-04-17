@@ -8,7 +8,7 @@ $id = $_GET['id'];
 $stmt = $pdo->prepare('SELECT * FROM peliculas WHERE id = ?');
 
 // Lo ejecuto
-$stmt->execute([2]);
+$stmt->execute([$id]);
 
 // Lo recupero
 $pelicula = $stmt->fetch(PDO::FETCH_OBJ);
