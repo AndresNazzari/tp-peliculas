@@ -33,7 +33,7 @@ function createProductsTable($conn) {
         brand VARCHAR(100),
         model VARCHAR(100),
         color VARCHAR(50),
-        category INT(6),
+        category VARCHAR(50),
         discount DECIMAL(5,2)
     )";
     $conn->exec($sql);
