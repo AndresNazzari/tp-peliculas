@@ -16,29 +16,6 @@ require __DIR__ . '/database/conn.php';
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <?php foreach ($categories as $category): ?>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
-                            href="#"><?php echo ucfirst($category->name); ?></a>
-                    </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-
     <main class="container">
         <section class="d-flex flex-wrap justify-content-evenly gap-3">
             <div class="card d-flex flex-column" style="width: 18rem;">

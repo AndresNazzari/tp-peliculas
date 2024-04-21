@@ -50,20 +50,27 @@ require_once __DIR__ . '/database/conn.php';
             </div>
         </section>
 
-        <section class="d-flex flex-wrap justify-content-evenly gap-3">
-            <?php foreach ($products as $product): ?>
-            <div class="card d-flex flex-column" style="width: 18rem;">
-                <img src=<?php echo $product->image; ?> class="card-img-top" alt=<?php echo $product->title; ?>>
-                <div class="card-body d-flex flex-column justify-content-between">
-                    <h5 class="card-title"><?php echo ucfirst($product->title); ?></h5>
-                    <p class="card-text"><?php echo ucfirst($product->brand); ?> <?php echo ucfirst($product->model); ?>
-                    </p>
-                    <a href="productDetail.php?id=<?php echo ucfirst($product->id); ?>"
-                        class="btn btn-primary">Details</a>
+        <div>
+            <?php if (empty($products)): ?>
+            <p>No hay productos disponibles en este momento.</p>
+            <?php else: ?>
+            <section class="d-flex flex-wrap justify-content-evenly gap-3">
+                <?php foreach ($products as $product): ?>
+                <div class="card d-flex flex-column" style="width: 18rem;">
+                    <img src=<?php echo $product->image; ?> class="card-img-top" alt=<?php echo $product->title; ?>>
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <h5 class="card-title"><?php echo ucfirst($product->title); ?></h5>
+                        <p class="card-text"><?php echo ucfirst($product->brand); ?>
+                            <?php echo ucfirst($product->model); ?>
+                        </p>
+                        <a href="productDetail.php?id=<?php echo ucfirst($product->id); ?>"
+                            class="btn btn-primary">Details</a>
+                    </div>
                 </div>
-            </div>
-            <?php endforeach; ?>
-        </section>
+                <?php endforeach; ?>
+            </section>
+            <?php endif; ?>
+        </div>
     </main>
 </body>
 

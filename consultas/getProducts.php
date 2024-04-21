@@ -5,11 +5,10 @@ require __DIR__ . '/../database/conn.php';
 $sql = 'SELECT * FROM products';
 
 try {
-    if (isset($_GET['category'])) {
+    if (isset($_GET['category']) && $_GET['category'] != '') {
         $category = $_GET['category'];
         $sql = $sql . ' WHERE category = :category';
         
-        var_dump($sql);
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':category', $category);
         
