@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../conn.php';
+require __DIR__ . '/../database/conn.php';
 
 $sql = 'SELECT * FROM peliculas';
 
