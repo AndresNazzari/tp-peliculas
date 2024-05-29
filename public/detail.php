@@ -1,8 +1,16 @@
 <?php
-// require __DIR__ . '/consultas/listado-peliculas.php'
-require __DIR__ . '/consultas/getCategories.php';
-require __DIR__ . '/consultas/getProductById.php';
-require __DIR__ . '/database/conn.php';
+require '../app/Config/DBConfig.php';
+require '../app/Models/Product.php';
+require '../app/Services/Products.service.php';
+require '../app/Repositories/Products.repository.php';
+
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+$productsRepository = new ProductsRepository(DBConfig::getDBConnection());
+
+$productsService = new ProductService($productsRepository);
+$product = $productsService->getById($id);
+
 ?>
 
 <!DOCTYPE html>
